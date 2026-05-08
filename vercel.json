@@ -8,14 +8,11 @@
       "maxDuration": 60
     }
   },
-  "rewrites": [
+  "routes": [
+    { "handle": "filesystem" },
     {
-      "source": "/",
-      "destination": "/api/index"
-    },
-    {
-      "source": "^/(?!api(?:/|$)|_vercel(?:/|$))(.+)$",
-      "destination": "/api/$1"
+      "src": "/(.*)",
+      "dest": "/api/index?path=$1"
     }
   ]
 }
