@@ -12,4 +12,22 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  vite: {
+    build: {
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        onwarn(warning, warn) {
+          // Suppress deprecation warnings for whatwg-encoding and punycode
+          if (
+            warning.code === "EXTERNAL_IMPORT_WARNINGS" ||
+            warning.message?.includes("punycode") ||
+            warning.message?.includes("whatwg-encoding")
+          ) {
+            return;
+          }
+          warn(warning);
+        },
+      },
+    },
+  },
 });
