@@ -5,7 +5,8 @@
   "outputDirectory": "dist/client",
   "functions": {
     "api/**/*.ts": {
-      "maxDuration": 60
+      "maxDuration": 60,
+      "memory": 1024
     }
   },
   "routes": [
