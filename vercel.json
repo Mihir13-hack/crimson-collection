@@ -3,14 +3,19 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 60
+    }
+  },
   "rewrites": [
     {
       "source": "/",
-      "destination": "/api"
+      "destination": "/api/index"
     },
     {
-      "source": "/:path((?!api/|_vercel/).*)",
-      "destination": "/api/:path*"
+      "source": "^/(?!api(?:/|$)|_vercel(?:/|$))(.+)$",
+      "destination": "/api/$1"
     }
   ]
 }
