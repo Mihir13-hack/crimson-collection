@@ -91,7 +91,7 @@ function Home() {
             transition={{ duration: 1, delay: 1.1 }}
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
-            <Link to="/shop" className="px-8 py-4 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-[0.25em] font-medium rounded-md hover:shadow-gold transition-all">
+            <Link to="/shop" search={{ category: "all", sort: "new" }} className="px-8 py-4 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-[0.25em] font-medium rounded-md hover:shadow-gold transition-all">
               Explore the Cellar
             </Link>
             <Link to="/booking" className="px-8 py-4 border border-white/20 text-xs uppercase tracking-[0.25em] hover:border-gold hover:text-gold transition-all rounded-md">
@@ -112,14 +112,14 @@ function Home() {
       {/* CATEGORIES STRIP */}
       <section className="container-luxe py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
+          {([
             { icon: Wine, label: "Red", to: "red" },
             { icon: Grape, label: "White", to: "white" },
             { icon: Sparkles, label: "Sparkling", to: "sparkling" },
             { icon: Wine, label: "Rosé", to: "rose" },
-          ].map((c, i) => (
+          ] as const).map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08}>
-              <Link to="/shop" search={{ category: c.to }} className="glass rounded-lg p-8 flex flex-col items-center gap-3 hover:border-gold/40 transition group">
+              <Link to="/shop" search={{ category: c.to, sort: "new" }} className="glass rounded-lg p-8 flex flex-col items-center gap-3 hover:border-gold/40 transition group">
                 <c.icon className="h-7 w-7 text-gold group-hover:scale-110 transition" />
                 <span className="text-sm uppercase tracking-[0.2em]">{c.label}</span>
               </Link>
@@ -132,7 +132,7 @@ function Home() {
       <section className="container-luxe py-20">
         <div className="flex items-end justify-between mb-12">
           <SectionHeading eyebrow="Cellar Selection" title="Featured Wines" />
-          <Link to="/shop" className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-gold gold-underline">
+          <Link to="/shop" search={{ category: "all", sort: "new" }} className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-gold gold-underline">
             View all <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

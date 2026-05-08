@@ -43,7 +43,7 @@ function CartPage() {
       <div className="container-luxe py-32 text-center">
         <h1 className="font-serif text-4xl">Your cellar is empty</h1>
         <p className="mt-3 text-foreground/70">Discover wines worth waiting for.</p>
-        <Link to="/shop" className="mt-8 inline-flex px-8 py-3 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-widest rounded-md">Browse the cellar</Link>
+        <Link to="/shop" search={{ category: "all", sort: "new" }} className="mt-8 inline-flex px-8 py-3 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-widest rounded-md">Browse the cellar</Link>
       </div>
     );
   }

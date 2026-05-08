@@ -28,7 +28,7 @@ export const Route = createFileRoute("/wine/$slug")({
   notFoundComponent: () => (
     <div className="container-luxe py-32 text-center">
       <h1 className="font-serif text-4xl">Wine not found</h1>
-      <Link to="/shop" className="mt-6 inline-block text-gold gold-underline">Return to cellar</Link>
+      <Link to="/shop" search={{ category: "all", sort: "new" }} className="mt-6 inline-block text-gold gold-underline">Return to cellar</Link>
     </div>
   ),
   errorComponent: () => <div className="container-luxe py-32 text-center text-foreground/70">Could not load this wine.</div>,

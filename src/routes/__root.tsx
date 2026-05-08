@@ -119,8 +119,10 @@ function RootComponent() {
       <AuthProvider>
         <div className="min-h-screen flex flex-col bg-background text-foreground">
           <Navbar />
-          <main className="flex-1 pt-20">
+          <main className="flex-1 pt-20 relative">
             <Outlet />
+            {/* Visual spacer/fade to separate content from footer */}
+            <div className="h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
           </main>
           <Footer />
         </div>

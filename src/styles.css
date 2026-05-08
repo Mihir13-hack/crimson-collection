@@ -144,4 +144,14 @@
   }
   .gold-underline:hover::after { transform: scaleX(1); transform-origin: left; }
   .container-luxe { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
+  
+  .animate-shimmer {
+    animation: shimmer 2.5s infinite linear;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }

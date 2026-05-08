@@ -8,13 +8,13 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
+  { to: "/shop", label: "Shop", search: { category: "all", sort: "new" } },
   { to: "/story", label: "Story" },
   { to: "/booking", label: "Visit" },
   { to: "/blog", label: "Journal" },
   { to: "/recommendations", label: "AI Sommelier" },
   { to: "/contact", label: "Contact" },
-];
+] as const;
 
 export function Navbar() {
   const { user, isAdmin } = useAuth();
@@ -52,6 +52,7 @@ export function Navbar() {
             <Link
               key={l.to}
               to={l.to}
+              search={"search" in l ? l.search : undefined}
               className={cn(
                 "text-sm uppercase tracking-[0.18em] gold-underline transition-colors",
                 path === l.to ? "text-gold" : "text-foreground/80 hover:text-gold"
@@ -107,6 +108,7 @@ export function Navbar() {
                 <Link
                   key={l.to}
                   to={l.to}
+                  search={"search" in l ? l.search : undefined}
                   className={cn(
                     "py-3 text-sm uppercase tracking-[0.18em] border-b border-white/5",
                     path === l.to ? "text-gold" : "text-foreground/80"
