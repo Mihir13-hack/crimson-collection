@@ -70,7 +70,7 @@ function Shop() {
   }, [data, priceMax, minRating, query]);
 
   const applyFilters = () => {
-    nav({ search: (s) => ({ ...s, category: draftCategory, sort: draftSort }) });
+    nav({ search: (s: z.infer<typeof search>) => ({ ...s, category: draftCategory, sort: draftSort }) });
     setOpen(false);
   };
 
