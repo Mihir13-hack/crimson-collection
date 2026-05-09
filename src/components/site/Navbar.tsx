@@ -12,7 +12,7 @@ const links = [
   { to: "/story", label: "Story" },
   { to: "/booking", label: "Visit" },
   { to: "/blog", label: "Journal" },
-  { to: "/recommendations", label: "AI Sommelier" },
+  
   { to: "/contact", label: "Contact" },
 ] as const;
 

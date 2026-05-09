@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as ShopRouteImport } from './routes/shop'
-import { Route as RecommendationsRouteImport } from './routes/recommendations'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
@@ -38,11 +37,6 @@ const StoryRoute = StoryRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RecommendationsRoute = RecommendationsRouteImport.update({
-  id: '/recommendations',
-  path: '/recommendations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -140,7 +134,6 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/recommendations': typeof RecommendationsRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -161,7 +154,6 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/recommendations': typeof RecommendationsRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -184,7 +176,6 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/recommendations': typeof RecommendationsRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -208,7 +199,6 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
-    | '/recommendations'
     | '/shop'
     | '/story'
     | '/admin/blog'
@@ -229,7 +219,6 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
-    | '/recommendations'
     | '/shop'
     | '/story'
     | '/admin/blog'
@@ -251,7 +240,6 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/contact'
-    | '/recommendations'
     | '/shop'
     | '/story'
     | '/admin/blog'
@@ -274,7 +262,6 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
-  RecommendationsRoute: typeof RecommendationsRoute
   ShopRoute: typeof ShopRoute
   StoryRoute: typeof StoryRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -296,13 +283,6 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/recommendations': {
-      id: '/recommendations'
-      path: '/recommendations'
-      fullPath: '/recommendations'
-      preLoaderRoute: typeof RecommendationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -456,7 +436,6 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
-  RecommendationsRoute: RecommendationsRoute,
   ShopRoute: ShopRoute,
   StoryRoute: StoryRoute,
   BlogSlugRoute: BlogSlugRoute,
@@ -466,13 +445,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
