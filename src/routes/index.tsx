@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience." },
       { property: "og:title", content: "Maison Noir" },
       { property: "og:description", content: "Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience." },
-      { property: "og:image", content: "https://wine-store-three.vercel.app//og-image.png" },
+      { property: "og:image", content: "https://wine-store-three.vercel.app/og-image.png" },
     ],
   }),
   component: Home,
