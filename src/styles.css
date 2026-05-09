@@ -1,14 +1,14 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source "../src";
 @import "tw-animate-css";
 
-:root {
+@custom-variant dark (&:is(.dark *));
 
-  --radius: 0.5rem;
+@theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -42,6 +42,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
 
   /* Luxury palette */
   --background: oklch(0.16 0.005 30);          /* near-black #0E0E0E */
@@ -89,9 +93,9 @@
   --shadow-deep: 0 20px 60px -20px oklch(0 0 0 / 0.6);
 }
 
-
-/* .dark is same as root — site is dark-only */
-
+.dark {
+  /* same as root — site is dark-only */
+}
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -138,31 +142,8 @@
     transform-origin: right;
     transition: transform 0.4s ease;
   }
-  .gold-underline:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  .container-luxe {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 80rem; /* 7xl */
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  @media (min-width: 640px) {
-    .container-luxe {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .container-luxe {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-  }
-
-
+  .gold-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+  .container-luxe { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
   
   .animate-shimmer {
     animation: shimmer 2.5s infinite linear;
