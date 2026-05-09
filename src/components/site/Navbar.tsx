@@ -5,14 +5,13 @@ import { Menu, X, ShoppingBag, User as UserIcon, Heart, ShieldCheck } from "luci
 import { useAuth } from "@/lib/auth";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo-maison-noir.png";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/shop", label: "Shop", search: { category: "all", sort: "new" } },
   { to: "/story", label: "Story" },
   { to: "/booking", label: "Visit" },
-  { to: "/blog", label: "Journal" },
-  
   { to: "/contact", label: "Contact" },
 ] as const;
 
