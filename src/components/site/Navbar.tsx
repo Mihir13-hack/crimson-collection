@@ -5,14 +5,13 @@ import { Menu, X, ShoppingBag, User as UserIcon, Heart, ShieldCheck } from "luci
 import { useAuth } from "@/lib/auth";
 import { useCart } from "@/lib/cart";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo-maison-noir.png";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/shop", label: "Shop", search: { category: "all", sort: "new" } },
   { to: "/story", label: "Story" },
   { to: "/booking", label: "Visit" },
-  { to: "/blog", label: "Journal" },
-  
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -44,7 +43,7 @@ export function Navbar() {
     >
       <div className="container-luxe flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="font-serif text-2xl tracking-wider text-gradient-gold">Maison Noir</span>
+          <img src={logo} alt="Maison Noir" className="h-10 md:h-12 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

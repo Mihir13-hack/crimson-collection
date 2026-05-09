@@ -6,7 +6,7 @@ import { Award, Wine, Grape, Sparkles, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { ProductCard, type ProductCardData } from "@/components/site/ProductCard";
 import { Reveal, SectionHeading } from "@/components/site/Reveal";
-import { heroImage, cellarImage } from "@/lib/wine-images";
+import { heroImage, cellarImage, estateVideo, getCategoryImage } from "@/lib/wine-images";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -110,18 +110,24 @@ function Home() {
       </section>
 
       {/* CATEGORIES STRIP */}
-      <section className="container-luxe py-20">
+      <section className="container-luxe pt-16 pb-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {([
-            { icon: Wine, label: "Red", to: "red" },
-            { icon: Grape, label: "White", to: "white" },
-            { icon: Sparkles, label: "Sparkling", to: "sparkling" },
-            { icon: Wine, label: "Rosé", to: "rose" },
+            { icon: Wine, label: "Red", to: "red", img: getCategoryImage("red") },
+            { icon: Grape, label: "White", to: "white", img: getCategoryImage("white") },
+            { icon: Sparkles, label: "Sparkling", to: "sparkling", img: getCategoryImage("sparkling") },
+            { icon: Wine, label: "Rosé", to: "rose", img: getCategoryImage("rose") },
           ] as const).map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08}>
-              <Link to="/shop" search={{ category: c.to, sort: "new" }} className="glass rounded-lg p-8 flex flex-col items-center gap-3 hover:border-gold/40 transition group">
-                <c.icon className="h-7 w-7 text-gold group-hover:scale-110 transition" />
-                <span className="text-sm uppercase tracking-[0.2em]">{c.label}</span>
+              <Link
+                to="/shop"
+                search={{ category: c.to, sort: "new" }}
+                className="relative overflow-hidden rounded-lg p-8 flex flex-col items-center gap-3 hover:border-gold/40 border border-white/10 transition group min-h-[180px]"
+              >
+                <img src={c.img} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
+                <c.icon className="h-7 w-7 text-gold group-hover:scale-110 transition relative z-10" />
+                <span className="text-sm uppercase tracking-[0.2em] relative z-10">{c.label}</span>
               </Link>
             </Reveal>
           ))}
@@ -129,7 +135,7 @@ function Home() {
       </section>
 
       {/* FEATURED WINES */}
-      <section className="container-luxe py-20">
+      <section className="container-luxe pt-6 pb-20">
         <div className="flex items-end justify-between mb-12">
           <SectionHeading eyebrow="Cellar Selection" title="Featured Wines" />
           <Link to="/shop" search={{ category: "all", sort: "new" }} className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-gold gold-underline">
@@ -183,26 +189,37 @@ function Home() {
         </div>
       </section>
 
-      {/* TASTING CTA */}
-      <section className="container-luxe py-32 text-center">
-        <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Visit the Estate</p>
-          <h2 className="font-serif text-4xl md:text-6xl leading-tight max-w-3xl mx-auto">
-            An afternoon among the vines, by candlelight in the cellar
-          </h2>
-          <p className="mt-6 text-foreground/70 max-w-xl mx-auto">
-            Reserve a private tasting or guided vineyard tour. Limited to twelve guests per session.
-          </p>
-          <Link to="/booking" className="mt-10 inline-flex px-10 py-4 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-[0.25em] rounded-md hover:shadow-gold transition">
-            Reserve Your Visit
-          </Link>
-        </Reveal>
+      {/* TASTING CTA — with estate video bg */}
+      <section className="relative py-32 text-center overflow-hidden">
+        <video
+          src={estateVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/85" />
+        <div className="relative container-luxe">
+          <Reveal>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Visit the Estate</p>
+            <h2 className="font-serif text-4xl md:text-6xl leading-tight max-w-3xl mx-auto">
+              An afternoon among the vines, by candlelight in the cellar
+            </h2>
+            <p className="mt-6 text-foreground/80 max-w-xl mx-auto">
+              Reserve a private tasting or guided vineyard tour. Limited to twelve guests per session.
+            </p>
+            <Link to="/booking" className="mt-10 inline-flex px-10 py-4 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-[0.25em] rounded-md hover:shadow-gold transition">
+              Reserve Your Visit
+            </Link>
+          </Reveal>
+        </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="container-luxe pb-32">
+      <section className="container-luxe pt-16 pb-8">
         <SectionHeading eyebrow="In Praise" title="What is being said" center />
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <blockquote className="glass rounded-lg p-8 h-full">
