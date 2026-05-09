@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { useCart, useWishlist } from "@/lib/cart";
-import { resolveWineImage } from "@/lib/wine-images";
+import { resolveWineImage, getBottleVideo } from "@/lib/wine-images";
 import { cn } from "@/lib/utils";
 
 export type ProductCardData = {
@@ -32,12 +32,30 @@ export function ProductCard({ p, index = 0 }: { p: ProductCardData; index?: numb
     >
       <Link to="/wine/$slug" params={{ slug: p.slug }} className="block">
         <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-b from-white/5 to-black/30 border border-white/5">
-          <img
-            src={resolveWineImage(p.image_url)}
-            alt={p.name}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
+          {(() => {
+            const videoUrl = getBottleVideo(p.category);
+            if (videoUrl) {
+              return (
+                <video
+                  src={videoUrl}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster={resolveWineImage(p.image_url)}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              );
+            }
+            return (
+              <img
+                src={resolveWineImage(p.image_url)}
+                alt={p.name}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            );
+          })()}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
           {p.vintage && (
             <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest text-gold/90 bg-black/40 backdrop-blur px-2 py-1 rounded">
