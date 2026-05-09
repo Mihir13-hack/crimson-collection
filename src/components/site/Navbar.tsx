@@ -43,7 +43,7 @@ export function Navbar() {
     >
       <div className="container-luxe flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="font-serif text-2xl tracking-wider text-gradient-gold">Maison Noir</span>
+          <img src={logo} alt="Maison Noir" className="h-10 md:h-12 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

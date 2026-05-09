@@ -25,7 +25,7 @@ export function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="relative mt-32 bg-background text-foreground overflow-hidden">
+    <footer className="relative mt-12 bg-background text-foreground overflow-hidden">
       {/* Decorative Top Border & Glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-wine/60 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-wine/30 blur-xl opacity-70 z-10" />
@@ -41,28 +41,26 @@ export function Footer() {
         {/* Center-to-bottom glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-wine/20 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="container-luxe relative py-24 z-10">
-          <div className="grid lg:grid-cols-12 gap-16 lg:gap-8">
+        <div className="container-luxe relative py-10 z-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-8">
             
             {/* LEFT: Brand & Address (Asymmetrical) */}
-            <div className="lg:col-span-5 flex flex-col justify-between">
+            <div className="lg:col-span-5 flex flex-col justify-between gap-8">
               <div>
-                <h2 className="font-serif text-6xl md:text-7xl text-gradient-gold tracking-tight mb-6">Maison Noir</h2>
+                <h2 className="font-serif text-4xl md:text-5xl text-gradient-gold tracking-tight mb-3">Maison Noir</h2>
                 <p className="text-sm text-foreground/70 max-w-sm leading-relaxed italic">
                   Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience.
                 </p>
               </div>
-              
-              <div className="mt-16 space-y-5">
-                <p className="text-sm text-foreground/60 leading-relaxed font-serif italic">
-                  Domaine de Maison Noir<br />
-                  12 Route des Vignes<br />
-                  Saint-Émilion, France
+
+              <div className="space-y-3">
+                <p className="text-xs text-foreground/60 leading-relaxed font-serif italic">
+                  Domaine de Maison Noir · 12 Route des Vignes · Saint-Émilion, France
                 </p>
-                <div className="flex gap-4">
-                  <a href="#" aria-label="Instagram" className="p-3 rounded-full glass hover:text-gold hover:border-gold/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"><Instagram className="h-4 w-4" /></a>
-                  <a href="#" aria-label="Facebook" className="p-3 rounded-full glass hover:text-gold hover:border-gold/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"><Facebook className="h-4 w-4" /></a>
-                  <a href="#" aria-label="Twitter" className="p-3 rounded-full glass hover:text-gold hover:border-gold/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"><Twitter className="h-4 w-4" /></a>
+                <div className="flex gap-3">
+                  <a href="#" aria-label="Instagram" className="p-2 rounded-full glass hover:text-gold hover:border-gold/40 transition-all duration-300"><Instagram className="h-4 w-4" /></a>
+                  <a href="#" aria-label="Facebook" className="p-2 rounded-full glass hover:text-gold hover:border-gold/40 transition-all duration-300"><Facebook className="h-4 w-4" /></a>
+                  <a href="#" aria-label="Twitter" className="p-2 rounded-full glass hover:text-gold hover:border-gold/40 transition-all duration-300"><Twitter className="h-4 w-4" /></a>
                 </div>
               </div>
             </div>
@@ -129,8 +127,8 @@ export function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-white/5 bg-[#050505]/80 backdrop-blur-xl relative z-10">
-          <div className="container-luxe py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-white/5 bg-[oklch(0.12_0.04_18)]/80 backdrop-blur-xl relative z-10">
+          <div className="container-luxe py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-6 text-foreground/40">
               <div className="flex items-center gap-2" title="Organic Certified">
                 <Leaf className="h-4 w-4" />
