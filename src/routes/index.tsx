@@ -189,26 +189,37 @@ function Home() {
         </div>
       </section>
 
-      {/* TASTING CTA */}
-      <section className="container-luxe py-32 text-center">
-        <Reveal>
-          <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Visit the Estate</p>
-          <h2 className="font-serif text-4xl md:text-6xl leading-tight max-w-3xl mx-auto">
-            An afternoon among the vines, by candlelight in the cellar
-          </h2>
-          <p className="mt-6 text-foreground/70 max-w-xl mx-auto">
-            Reserve a private tasting or guided vineyard tour. Limited to twelve guests per session.
-          </p>
-          <Link to="/booking" className="mt-10 inline-flex px-10 py-4 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-[0.25em] rounded-md hover:shadow-gold transition">
-            Reserve Your Visit
-          </Link>
-        </Reveal>
+      {/* TASTING CTA — with estate video bg */}
+      <section className="relative py-32 text-center overflow-hidden">
+        <video
+          src={estateVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/85" />
+        <div className="relative container-luxe">
+          <Reveal>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-4">Visit the Estate</p>
+            <h2 className="font-serif text-4xl md:text-6xl leading-tight max-w-3xl mx-auto">
+              An afternoon among the vines, by candlelight in the cellar
+            </h2>
+            <p className="mt-6 text-foreground/80 max-w-xl mx-auto">
+              Reserve a private tasting or guided vineyard tour. Limited to twelve guests per session.
+            </p>
+            <Link to="/booking" className="mt-10 inline-flex px-10 py-4 bg-gradient-gold text-gold-foreground text-xs uppercase tracking-[0.25em] rounded-md hover:shadow-gold transition">
+              Reserve Your Visit
+            </Link>
+          </Reveal>
+        </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="container-luxe pb-32">
+      <section className="container-luxe pt-16 pb-8">
         <SectionHeading eyebrow="In Praise" title="What is being said" center />
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <blockquote className="glass rounded-lg p-8 h-full">
