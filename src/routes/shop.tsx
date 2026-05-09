@@ -20,8 +20,10 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
       { title: "Wine Cellar — Maison Noir" },
-      { name: "description", content: "Browse the complete cellar — reds, whites, sparkling, and rosé from a family estate in Bordeaux." },
+      { name: "description", content: "Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience." },
       { property: "og:title", content: "Wine Cellar — Maison Noir" },
+      { property: "og:description", content: "Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience." },
+      { property: "og:image", content: "https://wine-store-three.vercel.app/og-image.png" },
     ],
   }),
   validateSearch: (s) => search.parse(s),

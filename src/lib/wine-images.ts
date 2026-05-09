@@ -1,9 +1,12 @@
 // Placeholder image resolver. Real bottle photography can replace these later.
-import bottleRed from "@/assets/videos/bottle-red.mp4.asset.json";
-import bottleWhite from "@/assets/videos/bottle-white.mp4.asset.json";
-import bottleSparkling from "@/assets/videos/bottle-sparkling.mp4.asset.json";
-import bottleRose from "@/assets/videos/bottle-rose.mp4.asset.json";
-import estateVid from "@/assets/videos/estate.mp4.asset.json";
+export const estateVideo = "/estate.mp4";
+
+const bottleVideos: Record<string, string> = {
+  red: "/bottle-red.mp4",
+  white: "/bottle-white.mp4",
+  sparkling: "/bottle-sparkling.mp4",
+  rose: "/bottle-rose.mp4",
+};
 import catRed from "@/assets/cat-red.jpg";
 import catWhite from "@/assets/cat-white.jpg";
 import catSparkling from "@/assets/cat-sparkling.jpg";
@@ -29,14 +32,6 @@ export function resolveWineImage(path?: string | null): string {
 
 export const heroImage = PLACEHOLDER_HERO;
 export const cellarImage = PLACEHOLDER_CELLAR;
-export const estateVideo = estateVid.url;
-
-const bottleVideos: Record<string, string> = {
-  red: bottleRed.url,
-  white: bottleWhite.url,
-  sparkling: bottleSparkling.url,
-  rose: bottleRose.url,
-};
 
 const categoryImages: Record<string, string> = {
   red: catRed,

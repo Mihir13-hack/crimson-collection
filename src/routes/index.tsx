@@ -11,10 +11,11 @@ import { heroImage, cellarImage, estateVideo, getCategoryImage } from "@/lib/win
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Maison Noir — Estate-bottled Luxury Wines" },
-      { name: "description", content: "Cellared since 1872. A family estate of limited-release wines, vineyard tours, and private tastings." },
-      { property: "og:title", content: "Maison Noir — Estate-bottled Luxury Wines" },
-      { property: "og:description", content: "Cellared since 1872. Limited-release wines from a family estate." },
+      { title: "Maison Noir" },
+      { name: "description", content: "Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience." },
+      { property: "og:title", content: "Maison Noir" },
+      { property: "og:description", content: "Crafted in our limestone cellars since 1872. A family estate dedicated to wines of quiet power and patience." },
+      { property: "og:image", content: "https://wine-store-three.vercel.app//og-image.png" },
     ],
   }),
   component: Home,

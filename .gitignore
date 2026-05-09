@@ -30,3 +30,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Allow video assets for Vercel
+!*.mp4
+!public/*.mp4
+!public/estate.mp4
