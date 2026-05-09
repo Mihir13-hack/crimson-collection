@@ -2,15 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/site/Reveal";
-import { cellarImage, heroImage } from "@/lib/wine-images";
+import { cellarImage, heroImage, resolveWineImage } from "@/lib/wine-images";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/story")({
-  head: () => ({ meta: [
-    { title: "Our Story — Maison Noir" },
-    { name: "description", content: "Five generations of patient winemaking at a family estate in Bordeaux, since 1872." },
-    { property: "og:title", content: "Our Story — Maison Noir" },
-  ] }),
+  head: () => ({
+    meta: [
+      { title: "Our Story — Maison Noir" },
+      { name: "description", content: "Five generations of patient winemaking at a family estate in Bordeaux, since 1872." },
+      { property: "og:title", content: "Our Story — Maison Noir" },
+    ]
+  }),
   component: Story,
 });
 
@@ -84,7 +86,7 @@ function Story() {
               <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block">
                 <div className="aspect-[4/3] overflow-hidden rounded-lg border border-white/10 mb-4">
                   <img
-                    src={post.cover_url ?? heroImage}
+                    src={post.cover_url ? resolveWineImage(post.cover_url) : heroImage}
                     alt={post.title}
                     loading="lazy"
                     className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700"
